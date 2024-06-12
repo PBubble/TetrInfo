@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TetrInfo</title>
+    <style>
+        /* 제목 링크 색상을 없애는 스타일 */
+        #mainTitle a {
+            color: inherit; /* 부모 요소의 색상 상속 */
+            text-decoration: none; /* 밑줄 없애기 */
+        }
+    </style>
+    <link rel="stylesheet" href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous">
+    </script>
+    <script>
+        // 페이지가 로드될 때 스크롤 위치를 저장합니다.
+        window.onload = function() {
+            sessionStorage.setItem('scrollPos', window.scrollY);
+        }
+    
+        // 페이지가 새로고침될 때 저장된 스크롤 위치로 이동합니다.
+        window.onbeforeunload = function() {
+            sessionStorage.setItem('scrollPos', window.scrollY);
+        }
+    
+        window.onload = function() {
+            // 저장된 스크롤 위치를 가져와서 스크롤합니다.
+            var scrollPos = sessionStorage.getItem('scrollPos');
+            if (scrollPos !== null) {
+                window.scrollTo(0, scrollPos);
+            }
+        }
+    </script>
+    
+    <style>
+        .card {
+            height: 350px; 
+            transition: transform 0.3s ease;
+        }
+        .card-img-top {
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .card-body {
+            height: 150px; 
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .toc {
+            margin-top: 30px;
+        }
+        .toc a {
+            display: block;
+            padding: 5px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-top: 50px;
+        }
+        .section-number {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .section h3 {
+            border-bottom: 2px solid red; /* 빨간색 줄 설정 */
+            padding-bottom: 10px; /* 아래 여백 추가 */
+            margin-bottom: 10px; /* 아래 여백 추가 */
+        }
+        .space {
+        margin-bottom: 20px; /* 아래 여백 추가 */
+    }
+    .footer {
+            background-color: #333333;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero d-flex align-items-center justify-content-center" style="background-color: #333333;">
+        <div class="container text-center">
+            <h1 class="display-4 text-light" id="mainTitle"><a href="main.html">TetrInfo</a></h1>
+            <h1 id="mainTitle"><p class="lead text-light"><a href="main.html">테트리스에 대한 다양한 정보들</a></p></h1>
+            <script>
+                // 'TetrInfo' 제목을 클릭하면 main.html로 이동합니다.
+                document.getElementById('mainTitle').onclick = function() {
+                    window.location.href = 'main.html';
+                };
+            </script>
+        </div>
+    </div>
+    <div style="margin-bottom: 100px;"></div>
+
+    <div class="container">
+        <div id="toc" class="toc">
+            <div class="note">
+                <p>기본적으로 스핀이라는 기술은 예시를 보고 모양을 외우는 것이 실전에서 가장 잘 쓰기 좋으니 외우는 걸 추천드립니다.</p> 
+                <div class="space"></div>
+            </div>
+            <b>목차</b>
+            <a href="#1">1. L스핀, J스핀</a>
+            <a href="#2">2. S스핀, Z스핀</a>
+            <a href="#3">3. I스핀</a>
+        </div>
+        <div id="1" class="section">
+            <h3><a class="section-number" href="#toc">1.</a><b> L스핀, J스핀</b></h3>
+            <p>다음은 평평하게 쌓는 걸 의식하다가 S, Z를 놓을 곳을 마땅히 찾지 못하는 경우입니다. 어떻게 하면 좋을지 미리 생각해 보시고 아래를 보시기 바랍니다.</p>
+            <div style="text-align: center;">
+                <img src="lspin_02_1.gif"></div>
+                <div class="space"></div>
+                <p>어떻게 하면 좋을지 떠올려 보셨나요?
+                    <div class="space"></div>
+                    여기서는 아래와 같이 하는 걸 추천드립니다.</p>
+                    <div style="text-align: center;">
+                        <img src="lspin_02_2.gif"></div>
+                        <div class="space"></div>
+                        <p>위의 ZL 조합은 이런 식으로 상당히 많이 사용됩니다.
+                            <div class="space"></div>
+                            취향에 따라 아래와 같이 할 수도 있습니다. 다만 Z를 세워 놓은 모양이 아름답지는 않습니다.
+                            <div class="space"></div>
+                            <div style="text-align: center;">
+                                <img src="lspin_02_3.gif"></div>
+                                <div class="space"></div>
+                                비슷한 LJ조합과 JL조합도 많이 사용됩니다. 아래 그림과 같습니다. 역시 실전에서 자주 활용할 수 있는 형태이니 익혀 두면 좋습니다.</p>
+                                <div style="text-align: center;">
+                                    <img src="jspin_02_3.gif"></div>
+                                    <div class="space"></div>
+                                    <p>평소에 안정적 지형을 만들기 위해 사용할 수도 있습니다.</p>
+                                    <div style="text-align: center;">
+                                        <img src="field07.gif"></div>
+                                        <div style="text-align: center;">
+                                            <img src="ljspin_03_4.gif"></div>
+                                            <div style="text-align: center;">
+                                                <img src="lspin_01_3.gif"></div>
+                                        <div class="space"></div>
+                                        <p>이런 조건에서는 오른쪽에 벽이 없는 형태도 가능합니다.</p>
+                                        <div style="text-align: center;">
+                                            <img src="lspin_04_3.gif"></div>
+                                            <div class="space"></div>
+                                            <p>같은 형태. 역시 미스드랍 복구용으로 쓸 수 있습니다. T스핀을 앞둔 상황이기 때문에 화력에도 도움이 될 것입니다.</p>
+                                            <div style="text-align: center;">
+                                                <img src="lspin_04_5.gif"></div>
+                                                <div class="space"></div>
+                                                <p>유사 형태. 이것도 역시 쓸 일이 있습니다. Z미노를 미스드랍한 상황이라고 생각해 보시기 바랍니다.</p>
+                                                <div style="text-align: center;">
+                                                    <img src="lspin_04_4 (1).gif"></div>
+                                                    <div class="space"></div>
+                                                    <p>위에서 보여드린 L스핀들은 J미노로도 가능하니 위 사진들을 거울에 비친다 생각하고 J스핀을 외우시면 됩니다.</p>
+        </div>
+        <div id="2" class="section">
+            <h3><a class="section-number" href="#toc">2.</a><b> S스핀, Z스핀</b></h3>
+            <p>각각의 회전에 대해 알려 드리기 전에, 테트리스는 시계 방향 회전과 반시계 방향 회전이 다르다는 것을 설명 드리고 싶습니다. 예를 들어 아래의 S미노를 보겠습니다.</p>
+            <div style="text-align: center;">
+                <img src="rotation_s.gif"></div>
+                <div class="space"></div>
+                <p>위 그림에서 <span style="color: blue;">위쪽은 초기 상태</span>입니다. 여기서 <span style="color: blue;">시계 방향 회전(키보드 X키, PS4 O키)을 하면 오른쪽 상태</span>가 됩니다. 초기 상태에서 <span style="color: blue;">반시계방향 회전(키보드 Z키, PS4 X키)를 하면 왼쪽 상태</span>가 됩니다.
+                    <div class="space"></div>
+                    <span style="color: red;">왼쪽 그림과 오른쪽 그림은 같아 보이지만 전혀 다른 상태</span>입니다. 이 글에서 사용할 회전 시스템(SRS)을 이용할 때 왼쪽과 오른쪽은 완전히 다른 상태입니다. 위치가 한 칸 다른 게 보일 텐데, 위치만 다른 게 아니라 미노의 상태도 다릅니다.
+                    <div class="space"></div>
+                    <span style="color: red;">위의 초기 상태와 아래의 180도 회전 상태도 전혀 다른 상태</span>입니다. 위치가 한 칸 다른 게 보일 텐데, 위치만 다른 게 아니라 미노의 상태도 다릅니다. 다만 180도 회전을 사용하는 경우는 많지 않기 때문에 신경을 쓸 일이 별로 없을 것입니다.
+                    <div class="space"></div>
+                    따라서 <span style="color: red;">제가 화살표로 회전 방향을 알려 드리는 경우에는 그 회전 방향을 그대로</span> 지키셔야 회전이 의도한 대로 됩니다. 아직 테트리스에 덜 익숙한 분들은 한쪽 회전만 사용하는 경우가 있는데, <span style="color: blue;">스핀 기술을 배우시려면 양쪽 회전을 다 사용하는 습관을 만드셔야 합니다.</span> 그래서 간단해 보이지만 실전에서 사용할 정도로 익숙해질 때까지는 시간이 조금 걸리는 편입니다.
+                    <div class="space"></div>
+                    Z미노와 I미노도 모두 다른 상태라는 점을 신경 쓰면서 해야 합니다.
+                    <div class="space"></div>
+                    <div style="text-align: center;">
+                        <img src="rotation_z.gif"></div>
+                        <div style="text-align: center;">
+                            <img src="rotation_i.gif"></div>
+                            <div class="space"></div>
+                            <span style="color: blue;">S스핀이나 Z스핀을 이용할 때에는 회전 방향에 특히 주의</span>해야 합니다. 아래 그림에서는 <span style="color: blue;">세울 때에 시계방향</span>, <span style="color: red;">넣을 때 시계방향</span>으로 돌려야 합니다.
+                            <div class="space"></div>
+                            참고로 시계방향 회전 기본 키는 키보드 기준 X입니다.
+                            <div class="space"></div>
+                            <div style="text-align: center;">
+                                <img src="szspin01-2.gif"></div>
+                                <div class="space"></div>
+                                이 방법을 사용하려면 아래 그림에서 보라색 점이 채워져 있아야 합니다.
+                                <div class="space"></div>
+                                <div style="text-align: center;">
+                                    <img src="szspin01-2_point.gif"></div>
+                                    <div class="space"></div>
+                                    보라색 점이 채워져 있지 않다면 아래의 방법을 이용할 수 있습니다. <span style="color: blue;">세울 때에 반시계방향</span>, <span style="color: red">넣을 때 반시계방향</span>으로 돌리면 됩니다.
+                                    <div class="space"></div>
+                                    <div style="text-align: center;">
+                                        <img src="szspin01-3.gif"></div>
+                                        <div class="space"></div>
+                                        아래 그림 같은 경우에도 끝까지 내린다음 <span style="color: blue;">시계방향</span>으로 회전시키면 아래로 내려갑니다.
+                                        <div class="space"></div>
+                                    <div style="text-align: center;">
+                                        <img src="szspin03-2.gif"></div>
+                                        <div class="space"></div>
+                                        S스핀을 할 때에는 Z스핀을 쓸 때 썼던 회전방향을 <span style="color: blue;">반대로</span> 하셔야 됩니다.
+                </p>
+        </div>
+        <div id="3" class="section">
+            <h3><a class="section-number" href="#toc">3.</a><b> I스핀</b></h3>
+            <p>왼쪽과 같이 T스핀 트리플을 하고 오른쪽 같은 지형이 되었습니다. I미노를 이용해 오른쪽을 깔끔하게 만들어 봅시다.
+                <div class="space"></div>
+                    <div style="text-align: center;">
+                    <img src="ispin1-1.gif"></div>
+                    <div class="space"></div>
+                    여기에서는 <span style="color: blue;">반시계 방향 -> 반시계 방향</span> 혹은 <span style="color: red;">시계 방향 -> 반시계 방향</span> 으로 I스핀이 가능합니다.
+                    <div class="space"></div>
+                    <div style="text-align: center;">
+                    <img src="ispin1-2.gif"></div>
+                    <div class="space"></div>
+                    하지만 위와 같이 둘 다 되는 건 오른쪽 벽이 막혀 있기 때문입니다.
+                    <div class="space"></div>
+                    아래 그림처럼 오른쪽이 막혀 있지 않은 경우라면 아래 그림과 같이 <span style="color: red;">시계 방향 -> 반시계 방향</span>은 안 됩니다.
+                    <div class="space"></div>
+                    <div style="text-align: center;">
+                    <img src="ispin1-3.gif"></div>
+                    <div class="space"></div>
+                    한편 반대 방향 회전은 조건이 조금 더 필요합니다. 아래 그림처럼 보라색 칸이 차 있어야 합니다.
+                    <div class="space"></div>
+                    이렇게 I스핀은 왼쪽과 오른쪽이 다릅니다. 그래서 S스핀·Z스핀이나 L스핀·J스핀에 비해 직관성이 떨어지고, 이에 따라 최상위권 유저들도 실수를 자주 합니다.
+                    <div class="space"></div>
+                    <div style="text-align: center;">
+                    <img src="ispin1-4.gif"></div>
+                    <div class="space"></div>
+                    따라서 I스핀은 여러 형태를 만들어 보고 연습을 많이 해 보는 것이 좋습니다.
+            </p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <h1 class="display-6 text-light" id="mainTitle"><a href="main.html">TetrInfo</a></h1>
+        </div>
+    </footer>
+    </body>
+    </html>
