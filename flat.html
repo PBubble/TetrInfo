@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TetrInfo</title>
+    <style>
+        /* 제목 링크 색상을 없애는 스타일 */
+        #mainTitle a {
+            color: inherit; /* 부모 요소의 색상 상속 */
+            text-decoration: none; /* 밑줄 없애기 */
+        }
+    </style>
+    <link rel="stylesheet" href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous">
+    </script>
+    <script>
+        // 페이지가 로드될 때 스크롤 위치를 저장합니다.
+        window.onload = function() {
+            sessionStorage.setItem('scrollPos', window.scrollY);
+        }
+    
+        // 페이지가 새로고침될 때 저장된 스크롤 위치로 이동합니다.
+        window.onbeforeunload = function() {
+            sessionStorage.setItem('scrollPos', window.scrollY);
+        }
+    
+        window.onload = function() {
+            // 저장된 스크롤 위치를 가져와서 스크롤합니다.
+            var scrollPos = sessionStorage.getItem('scrollPos');
+            if (scrollPos !== null) {
+                window.scrollTo(0, scrollPos);
+            }
+        }
+    </script>
+    
+    <style>
+        .card {
+            height: 350px; 
+            transition: transform 0.3s ease;
+        }
+        .card-img-top {
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .card-body {
+            height: 150px; 
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .toc {
+            margin-top: 30px;
+        }
+        .toc a {
+            display: block;
+            padding: 5px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-top: 50px;
+        }
+        .section-number {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .section h3 {
+            border-bottom: 2px solid red; /* 빨간색 줄 설정 */
+            padding-bottom: 10px; /* 아래 여백 추가 */
+            margin-bottom: 10px; /* 아래 여백 추가 */
+        }
+        .space {
+        margin-bottom: 20px; /* 아래 여백 추가 */
+    }
+    .footer {
+            background-color: #333333;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="hero d-flex align-items-center justify-content-center" style="background-color: #333333;">
+        <div class="container text-center">
+            <h1 class="display-4 text-light" id="mainTitle"><a href="main.html">TetrInfo</a></h1>
+            <h1 id="mainTitle"><p class="lead text-light"><a href="main.html">테트리스에 대한 다양한 정보들</a></p></h1>
+            <script>
+                // 'TetrInfo' 제목을 클릭하면 main.html로 이동합니다.
+                document.getElementById('mainTitle').onclick = function() {
+                    window.location.href = 'main.html';
+                };
+            </script>
+        </div>
+    </div>
+    <div style="margin-bottom: 100px;"></div>
+
+    <div class="container">
+        <div id="toc" class="toc">
+            <div class="note">
+                <p>테트리스의 기본 기술, 평평하게 쌓기입니다.
+                    <div class="space"></div>
+                    평평하게 쌓으면 여러 가지 장점이 있습니다.
+                    <div class="space"></div>
+                    ①속칭 뇌 정지가 안 와서 시간이 절약됨.<br>
+                    ②쓰레기 줄이 올라왔을 때 방해물이 적어서 효율적으로 대처할 수 있음.<br>
+                    ③평지에는 다양한 미노를 놓을 수 있으므로 구멍이 안 생기게 할 수 있음.<br>
+                    ④T스핀을 만들기 쉬워짐.<br>
+                    ⑤이후에 미노를 놓을 때 회전을 덜 하게 되어 시간이 절약됨.<br>
+                    <div class="space"></div>
+                    특히 평평하게 쌓는 것이 속도 향상에도 도움이 됩니다. 이 게임은 상대보다 빠르게 공격을 해야 하기 때문에 속도가 굉장히 중요합니다.</p>
+                    <div style="text-align: center;">
+                    <img src="flat003.jpg"></div>
+                    <div class="space"></div>
+                    <p>위 그림을 보면 보기만 해도 편안합니다. 보기만 편안한 게 아니고 게임을 하기에도 편안합니다. 본문에서는 평평하게 쌓는 방법을 간략하게 알아 보겠습니다.</p>
+                <div class="space"></div>
+            </div>
+            <b>목차</b>
+            <a href="#1">1. NEXT를 최소한 한 개는 보면서 하기</a>
+            <a href="#2">2. 울퉁불퉁하지 않게 쌓기</a>
+            <a href="#3">3. 깊이 세 칸 이상의 빈칸 만들지 않기</a>
+            <a href="#4">4. 블럭은 되도록 눕혀서 쌓기</a>
+            <a href="#5">5. 특정 미노가 필요한 구멍 만들지 않기</a>
+            <a href="#6">6. 패턴 익히기</a>
+            <a href="#7">7. 스핀 사용</a>
+        </div>
+        <div id="1" class="section">
+            <h3><a class="section-number" href="#toc">1.</a><b> NEXT를 최소한 한 개는 보면서 하기</b></h3>
+            <div style="text-align: center;">
+            <img src="flat1.jpg"></div>
+            <div class="space"></div>
+            <p>필드의 오른쪽 위에는 NEXT라는 글자와 함께 다음에 나올 미노 다섯 개가 표시됩니다.
+                <div class="space"></div>
+                다섯 개 모두 보는 건 어려운 일입니다만, 적어도 제일 위에 있는 하나는 보면서 해야 합니다.
+                <div class="space"></div>
+                하나라도 잘 보면서 아래의 원칙을 지킨다면 바닥에 구멍이 생기는 일은 막을 수 있을 것입니다.</p>
+        </div>
+        <div id="2" class="section">
+            <h3><a class="section-number" href="#toc">2.</a><b> 울퉁불퉁하지 않게 쌓기</b></h3>
+            <div style="text-align: center;">
+                <img src="flat2.jpg"></div>
+                <div class="space"></div>
+                <p>위 그림 같은 상황입니다. J미노나 O미노가 나오면 놓을 자리가 마땅치 않습니다. 초보자라면 울퉁불퉁한 필드에 O미노를 둘 곳이 없어서 고민했던 상황이 있었을 것입니다.
+                    <div class="space"></div>
+                    이런 상황은 T미노가 있어야 해결 가능합니다. 예를 들자면 왼쪽 그림은 가운데에 T를 뒤집어서 놓으면 지형이 괜찮아집니다.
+                    <div class="space"></div>
+                    그런데 T미노는 T스핀에 사용해야 할 귀한 자원이기도 하고, 7종 블럭 중 하나에 불과해서 자주 나오지도 않습니다. 가능하면 T는 구멍을 채우는 데 쓰지 않도록 하는 것이 좋습니다.</p>
+        </div>
+        <div id="3" class="section">
+            <h3><a class="section-number" href="#toc">3.</a><b> 깊이 세 칸 이상의 빈칸 만들지 않기</b></h3>
+            <div style="text-align: center;">
+                <img src="flat3.jpg"></div>
+                <div class="space"></div>
+                <p>위 그림 같은 상황입니다. 깊이 세 칸 이상의 구멍이 세 개나 있습니다.
+                    <div class="space"></div>
+                    가운데 구멍은 공격할 때 사용한다 치더라도, 왼쪽과 오른쪽 구멍은 I미노로 채우거나 L, J미노로 타협을 해야 합니다.
+                    <div class="space"></div>
+                    하지만 I미노는 7종 블럭 중 하나에 불과하기 때문에 자주 나오지 않습니다. 따라서 이런 상황은 애초에 만들지 않는 것이 좋습니다.</p>
+        </div>
+        <div id="4" class="section">
+            <h3><a class="section-number" href="#toc">4.</a><b> 블럭은 되도록 눕혀서 쌓기</b></h3>
+            <div style="text-align: center;">
+                <img src="flat4.jpg"></div>
+                <div class="space"></div>
+                <p>위 그림 두 개와 옆의 그림을 보시기 바랍니다. 미노가 세로로 서 있는 경우가 상당히 많은 것을 볼 수 있습니다. 블럭을 세워서 쌓으면 이런 불상사가 생길 가능성이 높아집니다.
+                    <div class="space"></div>
+                    만약 세워서 쌓고 싶다면 NEXT를 보면서 해야 합니다. T스핀을 위해서 그렇게 해야 할 때가 있습니다.
+                    <div class="space"></div>
+                    하지만 NEXT를 안 보고 무리하게 T스핀을 만들기 위해 블럭을 세워서 지형을 망치고 결국은 탑을 쌓는 경우가 많이 있습니다. 이런 불상사가 생기지 않게 가능한 한 미노는 눕혀서 쌓는 게 좋습니다.</p>
+        </div>
+        <div id="5" class="section">
+            <h3><a class="section-number" href="#toc">5.</a><b> 특정 미노가 필요한 구멍 만들지 않기</b></h3>
+            <div style="text-align: center;">
+                <img src="flat5.jpg"></div>
+                <div class="space"></div>
+                <p>위 그림을 보면 아주 총체적 난국입니다. I, L, J미노가 꼭 필요한 상황입니다. 그리고 바로 다음에 S, O미노가 나오면 세울 곳도 없습니다.
+                    <div class="space"></div>
+                    만약 넥스트를 보고 계획적으로 이렇게 만들었다면 큰 상관은 없습니다. 그런데 넥스트를 보면서 플레이했다면 이런 상황을 만들지 않을 것 같습니다.</p>
+        </div>
+        <div id="6" class="section">
+            <h3><a class="section-number" href="#toc">6.</a><b> 패턴 익히기</b></h3>
+            <p>어떻게 놓으면 평평한 모양이 나오는지는 오래 해 보면 경험적으로 알게 됩니다만, 대충이라도 알면 도움이 됩니다.</p>
+            <div class="space"></div>
+            <div style="text-align: center;">
+                <img src="flat6.gif"></div>
+                <div style="text-align: center;">
+                    <img src="flat7.gif"></div>
+                    <div style="text-align: center;">
+                        <img src="flat8.gif"></div>
+                        <div style="text-align: center;">
+                            <img src="flat9.gif"></div>
+                            <div style="text-align: center;">
+                                <img src="flat10.gif"></div>
+                                <div style="text-align: center;">
+                                    <img src="flat11.gif"></div>
+                                    <div style="text-align: center;">
+                                        <img src="flat12.gif"></div>
+                                        <div class="space"></div>
+                                        <p>패턴을 익히면 고민 시간이 줄기 때문에, 블럭을 빠르게 놓는 것에도 도움이 됩니다. 그리고 6-3 스태킹이나 가운데를 비우는 4줄 콤보 빌드 등을 사용할 때에도 도움이 됩니다.</p>
+                                    </div>
+        <div id="7" class="section">
+            <h3><a class="section-number" href="#toc">7.</a><b> 스핀 사용</b></h3>
+            <p>이건 위의 패턴과 연결되는 부분도 있습니다. 좋은 형태를 만들기 위해 I,T,L,J,S,Z 스핀을 사용하는 겁니다. 최상위권 유저들도 종종 사용하는 모습을 볼 수 있습니다. 예를 들면 아래와 같은 것들입니다.</p>
+            <div class="space"></div>
+            <div style="text-align: center;">
+                <img src="flat13.gif"></div>
+                <div style="text-align: center;">
+                    <img src="flat14.gif"></div>
+                <div class="space"></div>
+                <p>다르게 놓는 방법도 있습니다만, 지형을 평평하게 만들기 위해 일부러 스핀을 사용하는 것입니다.
+                    <div class="space"></div>
+                    그리고 스핀은 실수 복구용으로도 사용할 수 있으니, 배워 두면 여러 모로 좋습니다.</p>
+        </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <h1 class="display-6 text-light" id="mainTitle"><a href="main.html">TetrInfo</a></h1>
+            </div>
+        </footer>
+        </body>
+        </html>
